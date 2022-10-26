@@ -15,9 +15,12 @@ app.get("/courses", (req, res) => {
 
 app.get("/course/:id", (req, res) => {
   const id = req.params.id;
-
-  const singleCourse = course.find((c) => c.id == id);
-  res.send(singleCourse);
+  if (id > 6) {
+    res.send("Sorry! No Data Found");
+  } else {
+    const singleCourse = course.find((c) => c.id == id);
+    res.send(singleCourse);
+  }
 });
 
 app.listen(port, () => {
